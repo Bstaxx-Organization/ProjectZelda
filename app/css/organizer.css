@@ -1,0 +1,59 @@
+/*==================================================
+=            Bootstrap 3 Media Queries             =
+==================================================*/
+/*==========  Mobile First Method  ==========*/
+/* Custom, iPhone Retina */
+/* Extra Small Devices, Phones */
+/* Small Devices, Tablets */
+/* Medium Devices, Desktops */
+/* Large Devices, Wide Screens */
+/*=====================================================
+=            Bootstrap 2.3.2 Media Queries            =
+=====================================================*/
+html, body {
+  height: 100%;
+  background-color: #eee; }
+
+.green {
+  background-color: green; }
+
+.red {
+  background-color: red; }
+
+#orgainizerContainer #navView {
+  background-color: #8862A9;
+  min-width: 320px; }
+
+#orgainizerContainer button {
+  background-color: #eee; }
+
+#orgainizerContainer #newBtn {
+  background-color: #F18E3C; }
+
+#orgainizerContainer #contentViewContainer.tableView,
+#orgainizerContainer #contentViewContainer.listView,
+#orgainizerContainer #contentViewContainer.thumbnailView {
+  margin-top: 145px; }
+
+#navView #itemTable {
+  background-color: white;
+  border-radius: 4px; }
+
+#navView label {
+  color: white; }
+
+#contentViewContainer #selectedItem {
+  margin-top: 135px; }
+
+#contentViewContainer #docView {
+  margin-top: 125px; }
+
+#itemTable th, #itemTable td {
+  vertical-align: top;
+  cursor: pointer; }
+
+#itemTable th:last-child {
+  min-width: 139px; }
+
+button img {
+  width: 18px; }

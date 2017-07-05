@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row">
+        <div id="navControls">
+            <div class="nav col-xs-12">
+                <button type="button" class="btn btn-default navbar-btn pull-right" ng-click="changeContentView(tableView)">
+                    <img src="img/Detail-View-512.png" alt="" style="width:18px;">
+                </button>
+
+                <button type="button" class="btn btn-default navbar-btn pull-right" ng-click="changeContentView(listView)">
+                    <img src="img/list.png" alt="" style="width:18px;">
+                </button>
+
+                <button type="button" class="btn btn-default navbar-btn pull-right" ng-click="changeContentView(thumbnailView)">
+                    <img src="img/33-Thumbnail-512.png" alt="" style="width:18px;">
+                </button>
+
+                <button id="newBtn" type="button" ng-click="newBtn()" class="btn btn-default navbar-btn pull-right" >
+                    <img alt="" style="width:18px;" src="img/add.png" ng-hide="isEditMode()">
+                    <img alt="" style="width:18px;" src="img/edit.png" ng-show="isEditMode()">
+                </button>
+                
+                <!--button type="button" class="btn btn-default navbar-btn pull-right" ng-click="changeContentView(docView)" >
+                    <img src="img/document.png" alt="" style="width:18px;">
+                </button-->
+            </div>
+            
+            <div class="col-xs-12">
+                <ol class="breadcrumb" ng-show="contentView == docView">
+                    <li><a href="#">Items</a></li>
+                    <li ng-show="parentItem.title">
+                        <a href="#">Parent Item: {{ parentItem.title }}</a>
+                    </li>
+                    <li ng-show="selectedItem.title" class="active">{{ selectedItem.title }}</li>
+                </ol>
+            </div>
+
+                
+
+            
+            <div class="form-group col-xs-6 col-sm-8" ng-hide="contentView == docView">
+                <label for="searchItem">Search Items {{  searchItems }}</label>
+                <input id="searchItems" class="form-control" type="test" ng-model="itemSettings.filter.title" placeholder="Search Items">
+            </div>
+            
+            <div class="form-group col-xs-6 col-sm-4" ng-hide="contentView == docView">
+                <label for="rowLimit" class="control-label">Item Limit</label>
+                <input id="rowLimit" class="form-control" type="number" step="1" min="0" max="20" ng-model="itemSettings.rowLimit">
+            </div>
+            
+        </div>
+    </div>
+
+
+</div>

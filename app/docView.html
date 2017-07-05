@@ -1,0 +1,47 @@
+<div id="docView" class="container">
+
+    <div class="row">
+
+        <img class="col-xs-12 col-sm-6" alt="{{ item.title }}" ng-src="{{ selectedItem.icon }}" ng-show="selectedItem.icon" />
+
+        <img class="col-xs-12 col-sm-6" alt="{{ item.title }}" ng-src="img/img-mock-up.png" ng-show="!selectedItem.icon" />
+
+        <h1 class="col-sm-6">{{ selectedItem.title }}</h1>
+
+        <p class="col-sm-6">{{ selectedItem.description }}</p>
+
+        <h2 class=" col-xs-12" ng-show="selectedItem.properties.length > 0">Inventory</h2>
+
+        <div class="col-xs-4" ng-repeat="property in selectedItem.properties">
+            <a href="#{{ property.id | item:this:'title' }}" class="thumbnail" style="position:relative;" ng-click="selectItem( property.id | item:this )">
+
+                <img alt="{{ property.id | item:this:'title' }}" style="width:100%;" ng-src="{{ property.id | item:this:'icon' }}" ng-show="property.id | item:this:'icon'" />
+
+                <img alt="{{ property.id | item:this:'title' }}" style="width:100%;" ng-src="img/img-mock-up.png" ng-hide="property.id | item:this:'icon'" />
+
+                <div style="position: absolute; top: 4px; right: 4px; width:30%; height: 30%;background:#D1D2D4; padding: 3px;">
+                    <img src="img/link-2.png" alt="{{item.title}}" style="width:100%;">
+                </div>
+
+            </a>
+        </div>
+        
+        <h2 class=" col-xs-12" ng-show="selectedItem">Classes</h2>
+
+        <div class="col-xs-4" ng-repeat="item in items | isItemClass:this">
+            <a href="#{{ item.title }}" class="thumbnail" style="position:relative;" ng-click="selectItem( item )">
+
+                <img alt="{{ item.title }}" style="width:100%;" ng-src="{{ item.icon }}" ng-show="item.icon" />
+
+                <img alt="{{ item.title }}" style="width:100%;" ng-src="img/img-mock-up.png" ng-hide="item.icon" />
+
+                <div style="position: absolute; top: 4px; right: 4px; width:30%; height: 30%;background:#D1D2D4; padding: 3px;">
+                    <img src="img/link-2.png" alt="{{item.title}}" style="width:100%;">
+                </div>
+
+            </a>
+        </div>
+
+    </div>
+
+</div>

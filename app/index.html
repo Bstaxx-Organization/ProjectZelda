@@ -1,0 +1,59 @@
+<!doctype html>
+<html ng-app="categorizer">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Object Oriented Organizer</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/organizer.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/itemModel.js"></script>
+    <script src="js/organizerApp.js"></script>
+    <script src="js/navController.js"></script>
+
+    <!--script src="js/items.js"></script-->
+
+</head>
+
+<body>
+
+    <div id="orgainizerContainer" class="container-fluid" ng-controller="navController">
+
+        <!--navbar-fixed-top-->
+        <nav id="navView" class="navbar navbar-default navbar-fixed-top" aria-label="Page navigation" ng-include="navView">
+        </nav>
+
+        <div id="contentViewContainer" class="container" ng-class="contentViewContainerClass">
+
+            <div id="contentView" class="row" ng-include="contentView">
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="modalContainer" ng-include="modal.html">
+    </div>
+
+</body>
+
+</html>

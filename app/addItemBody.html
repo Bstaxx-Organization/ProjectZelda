@@ -1,0 +1,26 @@
+<form>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1" >Title</label>
+        <input 
+               type="text" 
+               class="form-control" 
+               id="addItemTitle" 
+               placeholder="Title"
+               ng-model="newItemTitle">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Description</label>
+        <input type="text" 
+               class="form-control" 
+               id="exampleInputPassword1" 
+               placeholder="Description"
+               ng-model="newItemDesc">
+    </div>
+
+    <button ng-click="addItem()" type="submit" class="btn btn-default">Add Item</button>
+    
+    <!--button ng-click="editItem" type="submit" class="btn btn-default">Edit Item</button-->
+
+</form>

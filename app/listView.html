@@ -1,0 +1,42 @@
+<div class="media col-xs-12"
+     ng-repeat="item in items | filter: itemSettings.filter | limitTo : itemSettings.rowLimit" 
+     ng-init="item.index = $index">
+    <div class="media-left">
+        <a href="#">
+            <img alt="{{ item.title }}" style="width:100px;" 
+            ng-src="{{ item.icon }}"  
+            ng-show="item.icon"
+            ng-click="selectItem( item )"/>
+
+            <img alt="{{ item.title }}" style="width:100px;" 
+            ng-src="img/img-mock-up.png"  
+            ng-show="!item.icon"
+            ng-click="selectItem( item )"/>
+        </a>
+    </div>
+    <div class="media-body">
+        <h4 class="media-heading">{{ item.title }}</h4>
+        <p>{{ item.description }}</p>
+        <div class="btn-group" role="group" aria-label="...">
+            <button 
+                    type="button" 
+                    class="btn btn-default"
+                    data-toggle="modal" 
+                    data-target="#modal" 
+                    ng-click="selectItem( item )">
+                <img src="img/open.png" alt="" style="width:18px;" >
+            </button>
+            <button 
+                    type="button" 
+                    class="btn btn-default">
+                <img src="img/insert.png" alt="" style="width:18px;">
+            </button>
+            <button 
+                    type="button" 
+                    class="btn btn-default" 
+                    ng-click="deleteItem( item )">
+                <img src="img/delete.png" alt="" style="width:18px;" >
+            </button>
+        </div>
+    </div>
+</div>
