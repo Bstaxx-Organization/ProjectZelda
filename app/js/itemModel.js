@@ -2,8 +2,6 @@ var Item = {};
 
 Item.prototype = {
     
-
-    
     delete: function () {
         if( confirm("Are you sure you want to delete this item?") ) {
             this.active = false;
@@ -12,10 +10,12 @@ Item.prototype = {
         }
         
     },
+    
     restore: function () {
         this.active = true;
         return this;
     },
+    
     inheritProperties: function ( items ) {
         console.log(items);
         var inheritance = this.inheritance,
@@ -33,6 +33,7 @@ Item.prototype = {
         
         console.log(properties);
     },
+    
     getIcon: function ( item ) {
         if ( this.icon ) {
             return this.icon;
@@ -43,19 +44,39 @@ Item.prototype = {
     },
     
     deleteProperty: function ( property ) {
-        var properties = this.properties,
-            index = properties.indexOf( property );
-        if (index > -1) {
-            properties.splice(index, 1);
+        if( confirm("Are you sure you want to delete this property?")) {
+            var properties = this.properties,
+                index = properties.indexOf( property );
+            if (index > -1) {
+                properties.splice(index, 1);
+            }
         }
     },
     
-    addProperty: function ( itemId ) {
-        if ( typeof itemId === 'number' ) {
-            this.properties.push({
-                id: itemId,
-                active: true
-            });
+    addProperty: function () {
+        var selectedProperty = this.selectedProperty;
+        switch( selectedProperty.dataModel ) {
+            case 'item':
+                this.properties.push({ 
+                    id: this.properties.length,
+                    model: selectedProperty.dataModel, 
+                    itemId: selectedProperty.itemModel, 
+                    active: true 
+                });
+                console.log(selectedProperty);
+                break;
+            case 'text':
+                this.properties.push({ 
+                    id: this.properties.length,
+                    model: selectedProperty.dataModel, 
+                    propertyName: selectedProperty.propertyName, 
+                    data: selectedProperty.textData,
+                    active: true 
+                });
+                console.log(selectedProperty);
+                break;
         }
+        
+        this.selectedProperty = {};
     }
 };
