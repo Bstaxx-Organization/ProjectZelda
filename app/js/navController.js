@@ -285,6 +285,24 @@
             active: false,
         }); 
         
+        $scope.propertyValidation = function ( selectedItem ) {
+            var selectedProperty = selectedItem.selectedProperty;
+            console.log( selectedProperty );
+            if ( selectedProperty ) {
+                switch( selectedProperty.dataModel ) {
+                    case 'item':
+                        if( selectedProperty.itemModel ) { return true; };
+                        break;
+                    default:
+                        var input = selectedProperty.dataModel + 'Data';
+                        if( selectedProperty.propertyName && selectedProperty[input] ) { return true; };
+                        break;
+                };
+                //return false;
+            };
+            
+        }
+        
         /* item data
         ==========================================================*/
         $scope.items = [
