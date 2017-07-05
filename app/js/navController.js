@@ -291,7 +291,7 @@
             if ( selectedProperty ) {
                 switch( selectedProperty.dataModel ) {
                     case 'item':
-                        if( selectedProperty.itemModel ) { return true; };
+                        if( typeof selectedProperty.itemModel == 'number' ) { return true; };
                         break;
                     default:
                         var input = selectedProperty.dataModel + 'Data';
