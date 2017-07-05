@@ -1,98 +1,91 @@
-<form id="selectedItem">                         
+<form id="selectedItem">
     <h1>Item Brief</h1>
-    
-    
-    
+
     <div class="form-group">
-        <label for="title" >Title</label>
-        <input type="text" class="form-control" id="title" placeholder="Title"
-               ng-model="selectedItem.title">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" placeholder="Title" ng-model="selectedItem.title">
     </div>
 
     <div class="form-group">
         <label for="description">Description</label>
-        <textarea class="form-control" id="description" rows="3" placeholder="Description"
-               ng-model="selectedItem.description">
+        <textarea class="form-control" id="description" rows="3" placeholder="Description" ng-model="selectedItem.description">
         </textarea>
     </div>
 
     <h1>Item Properties</h1>
+
+    <div class="form-group">
+        <label for="propertyAction">Add Property</label>
+        <select id="dataModel" class="form-control" ng-model="selectedItem.selectedProperty.dataModel">
+            <option value=""></option>
+            <option value="item">Item Model</option>
+            <option value="text">Text Model</option>
+        </select>
+    </div>
     
-    <!--div class="form-group">
-        <label for="propertyAction" >Property Action</label>
-        <select id="propertyAction" class="form-control"
-                ng-model="selectedItem.propertyAction">
-            <option value="inherit">Inherit</option>
-            <option value="new">Create New Property</option>
-        </select> 
-    </div-->
+    <div class="form-group" ng-show="selectedItem.selectedProperty.dataModel == 'item'">
+        <select id="itemModel" class="form-control" 
+            ng-model="selectedItem.selectedProperty.itemModel" 
+            ng-options="item.id as item.title for item in items | freeProperties:this">
+            <option value="">**Select Item Model**</option>
+        </select>
+    </div>
     
+    <div class="form-group" ng-show="selectedItem.selectedProperty.dataModel && selectedItem.selectedProperty.dataModel != 'item'">
+        <input id="propertyName" class="form-control" type="text" placeholder="Enter Property Name" 
+            ng-model="selectedItem.selectedProperty.propertyName">
+    </div>
     
+    <div class="form-group" ng-show="selectedItem.selectedProperty.dataModel && selectedItem.selectedProperty.dataModel != 'item'">
+        <textarea id="textData" class="form-control" rows="5" placeholder="Enter Text Data"
+            ng-model="selectedItem.selectedProperty.textData"
+        ></textarea>
+    </div>
+    
+    <div class="form-group">
+        <button type="button" class="btn btn-block" 
+            ng-click="selectedItem.addProperty()">Add Item</button>
+    </div>
     
     <table class="table table-hover table-condensed">
+
         <thead>
             <tr>
-                <th colspan="2">Property type</th>
-                <th>Add</th>
+                <th>Property type</th>
+                <th>Model</th>
+                <th>Action</th>
             </tr>
         </thead>
 
         <tbody>
-            
-            <tr>
-                <td colspan="2">
-                    <div class="form-group">
-                        <!--label for="inherit" >Inherit from item</label-->
-                        <select id="inherit" class="form-control"
-                            ng-model="selectedItem.selectedProperty"
-                            ng-options="item.id as item.title for item in items | freeProperties:this">
 
-                        </select>
-                    </div>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-default" ng-click="selectedItem.addProperty(selectedItem.selectedProperty)">
-                        <img src="img/add.png" alt="open">
-                    </button>
-                </td>
-            </tr>
-            
-            <tr>
-                <th>Property type</th>
-                <th>Data Model</th>
-                <th>Action</th>
-            </tr>
-            
             <tr ng-repeat="property in selectedItem.properties | filter:{active:true}">
-                <td>{{ property.id | item:this:'title' }}</td>
-                <td>Item</td>
+                <td>{{ property | getPropertyName:this }}</td>
+                <td>{{ property.model }}</td>
                 <td>
                     <button type="button" class="btn btn-default" ng-click="selectedItem.deleteProperty( property );">
                         <img src="img/delete.png" alt="open">
                     </button>
                 </td>
             </tr>
-            
+
         </tbody>
-        
+
     </table>
-    
-    
-    
+
     <div class="form-group" ng-show="selectedItem.propertyAction == 'new'">
-        <label for="newPropertyType" >New Property Type</label>
-        <select id="newPropertyType" class="form-control"
-                ng-model="selectedItem.newPropertyType">
+        <label for="newPropertyType">New Property Type</label>
+        <select id="newPropertyType" class="form-control" ng-model="selectedItem.newPropertyType">
             <option value="text">text</option>
             <option value="selection">number</option>
-        </select> 
+        </select>
     </div>
-    
+
     <!--div class="form-group" ng-show="selectedItem.newPropertyType == 'text'">
         <label for="newPropertyType" >Name</label>
         <input type="text" class="form-control" id="newText" ng-model="selectedItem.selectedProperty.name" >
     </div-->
-    
+
     <!--div class="form-group" ng-show="selectedItem.propertyAction == 'copy'">
         <label for="copyFrom" >Copy From</label>
         <select id="copyFrom" class="form-control"
@@ -103,12 +96,10 @@
         </select>
     </div-->
 
-    <button type="button" class="btn btn-default" 
-            ng-click="saveAndNew()" >Save and new</button>
-            
-    <button type="submit" class="btn btn-default" 
-            ng-click="saveAndClose()" >Save and close</button>
-    
+    <button type="button" class="btn btn-default" ng-click="saveAndNew()">Save and new</button>
+
+    <button type="submit" class="btn btn-default" ng-click="saveAndClose()">Save and close</button>
+
 
     <!--button type="submit" class="btn btn-default" 
             ng-show="showUpdateBtn"

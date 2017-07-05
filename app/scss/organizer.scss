@@ -3,8 +3,6 @@ $secondaryColor: #eee;
 $accentColor1: #F18E3C;
 $accentColor2: #00CAF9;
 
-$blue: blue;
-
 $minWidth: 320px;
 
 /*==================================================
@@ -79,11 +77,6 @@ html, body {
     #navView {
         background-color: $primaryColor;
         min-width: $minWidth;
-    }
-    
-    
-    button {
-        background-color: $secondaryColor;
     }
     
     #newBtn {

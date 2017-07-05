@@ -18,21 +18,42 @@
         }
     });
     
+    organizer.filter('getPropertyName', function () {
+        return function (property, scope) {
+            var output = [],
+                items = scope.items;
+            switch( property.model ) {
+                case 'item' :
+                    for( var i = 0; i < items.length; i++ ) {
+                        if( items[i].id == property.itemId ) {
+                            return items[i].title;
+                        }
+                    };
+                    break;
+                default :
+                    return property.propertyName;
+            } 
+        }
+    });
+    
     // filters items array for items that are not already in selectedItem properties 
     organizer.filter('freeProperties', function () {
         return function (items, scope) {
-                var output = [];
-                for ( var i= 0; i < items.length; i++ ) {
-                    var isProperty = false;
-                    if ( scope.selectedItem.properties ) {
-                        for ( var j = 0; j < scope.selectedItem.properties.length; j++ ) {        
-                            if ( items[i].id == scope.selectedItem.properties[j].id ) { isProperty = true; } 
-                        }
+            var output = [],
+                properties = scope.selectedItem.properties;
+            for ( var i= 0; i < items.length; i++ ) {
+                var isProperty = false;
+                if ( properties ) {
+                    for ( var j = 0; j < properties.length; j++ ) {        
+                        if ( properties[j].itemId && items[i].id == properties[j].itemId ) { 
+                            isProperty = true; 
+                        } 
                     }
-                    if ( items[i].id == scope.selectedItem.id ) { isProperty = true; }
-                    if ( !isProperty ) { output.push( items[i] ); } 
                 }
-                return output;
+                if ( items[i].id == scope.selectedItem.id ) { isProperty = true; }
+                if ( !isProperty ) { output.push( items[i] ); } 
+            }
+            return output;
         }
     });
     
@@ -69,8 +90,6 @@
         $scope.docView = "docView.html"; // view selection
         $scope.editView = "editView.html"; // view selection
         $scope.contentView = $scope.thumbnailView; // controls contentView's view
-        
-        
         
         // item list settings
         $scope.itemSettings = {
@@ -280,9 +299,9 @@
                 icon: "img/fruit.png",
                 items: [1,2,3],
                 properties: [
-                    { id: 1, active: true },
-                    { id: 2, active: true },
-                    { id: 3, active: true }
+                    { model: 'item', itemId: 1, active: true },
+                    { model: 'item', itemId: 2, active: true },
+                    { model: 'item', itemId: 3, active: true }
                 ],
                 propertyAction: "inherit"
             }),
@@ -339,7 +358,7 @@
                 icon: "",
                 items: [0],
                 properties: [
-                    { id: 0, active: true }
+                    { model: 'item', itemId: 0, active: true }
                 ],
                 propertyAction: "inherit"
             }),
