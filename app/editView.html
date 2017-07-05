@@ -44,7 +44,8 @@
     
     <div class="form-group">
         <button type="button" class="btn btn-block" 
-            ng-click="selectedItem.addProperty()">Add Item</button>
+            ng-click="selectedItem.addProperty()"
+            ng-disabled="!propertyValidation( selectedItem )">Add Property</button>
     </div>
     
     <table class="table table-hover table-condensed">
