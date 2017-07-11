@@ -272,16 +272,9 @@
             return item;
         }
         
-        $scope.newItem = function ( args ) {
-            var item = Item.prototype,
-                newItem = args ? args : {};
-            newItem.prototype = item;
+        $scope.newItem = function ( newItem ) {
+            newItem.prototype = Item.prototype;;
             newItem.properties = newItem.properties ? newItem.properties : [];
-            newItem.delete = item.delete;
-            newItem.restore = item.restore;
-            newItem.deleteProperty = item.deleteProperty;
-            newItem.addProperty = item.addProperty;
-            newItem.inheritProperties = item.inheritProperties;
             return newItem;
         }
         
