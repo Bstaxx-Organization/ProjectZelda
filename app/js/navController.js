@@ -74,7 +74,8 @@
         }
     });
     
-    organizer.controller('navController', function ($scope) {
+    organizer.controller('navController', function ($scope, storage) {
+        
         
         /* navView's settings
         ==========================================================*/
@@ -113,6 +114,14 @@
                 $scope.contentViewContainerClass = $scope.contentView.split('.')[0]; 
             }
         };
+        
+        /* Local Storage
+        ==========================================================*/
+        $scope.saveData = function () {
+            //storage.items = $scope.items;
+        }
+        
+        
         
         /* 
         ==========================================================*/
@@ -303,9 +312,9 @@
             
         }
         
-        /* item data
+        /* Storage
         ==========================================================*/
-        $scope.items = [
+        storage.bind($scope, 'items', { defaultValue: [
             
             $scope.newItem({
                 id: 0,
@@ -381,12 +390,10 @@
                 propertyAction: "inherit"
             }),
             
-            
-        ];
+        ] });
         
-        
-        
-        //Item.prototype.items = $scope.items;
+        storage.viewType = 'ANYTHING';
+        console.log(storage.get('items'));
        
     });  
 

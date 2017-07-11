@@ -1,0 +1,25 @@
+{
+  "name": "Project Zelda",
+  "homepage": "https://github.com/PUBSolutions/ProjectZelda",
+  "authors": [
+    "bstaxx <banthony0787@gmail.com>"
+  ],
+  "description": "A Compendium that will help organize your assets and ideas",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "angular": "^1.6.5",
+    "bootstrap": "^3.3.7",
+    "angularLocalStorage": "^0.3.2",
+    "angular-route": "^1.6.5",
+    "angular-cookies": "^1.6.5"
+  }
+}
