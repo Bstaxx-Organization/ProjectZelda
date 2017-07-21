@@ -9,6 +9,102 @@ $minWidth: 320px;
 =            Bootstrap 3 Media Queries             =
 ==================================================*/
 
+
+
+
+
+
+html, body {
+    height: 100%;
+    background-color: $secondaryColor;
+}
+
+#orgainizerContainer {
+    
+    #navView {
+        background-color: $primaryColor;
+        min-width: $minWidth;
+        #itemTable {
+            background-color: white;
+            border-radius: 4px;
+        }
+
+        label {
+            color: white;
+        }
+        
+        #newBtn {
+            background-color: $accentColor1;
+        }
+    }
+    
+    
+
+    .tableView, 
+    .listView,
+    .thumbnailView,
+    .editView,
+    .docView
+    {
+        margin-top: 145px;
+        
+    }
+    
+    .tableView {
+        #itemTable {
+            th, td {
+                vertical-align: top;
+                cursor: pointer;
+            }
+
+            th:last-child {
+                min-width: 139px;
+            }
+        }
+    }
+    
+    .thumbnailView {
+        .thumbnail {
+            position:relative;
+            margin-bottom: 65px;
+            .thumbLabel {
+                background-color: transparent;
+                position: absolute;
+                left: 0px;
+                width: 100%;
+                padding: 8px 0px 0px;
+                font-size: 16px;
+                height: 55px;
+            }
+        }
+    }
+    
+    .editView {
+        .thumbnail {
+            canvas { width: 100%; }
+        }
+        .thumbnail.selected {
+            background-color:grey;
+        }
+    }
+
+    
+    
+}
+
+
+
+
+
+button {
+    
+    img {
+        width: 18px;
+    }
+    
+}
+
+
     /*==========  Mobile First Method  ==========*/
 
     /* Custom, iPhone Retina */ 
@@ -52,92 +148,28 @@ $minWidth: 320px;
     }
 
     @media only screen and (max-width : 480px) {
-
+        #orgainizerContainer {
+            .thumbnailView {
+                .thumbnail {
+                    .thumbLabel {
+                        font-size:12px;
+                    }
+                }
+            }
+        }
     }
 
     @media only screen and (max-width : 320px) {
-        
+        #orgainizerContainer {
+            .thumbnailView {
+                .thumbnail {
+                    .thumbLabel {
+                        font-size:10px;
+                    }
+                }
+            }
+        }
     }
-
-
-
-
-
-html, body {
-    height: 100%;
-    background-color: $secondaryColor;
-}
-
-.green { background-color: green }
-.red { background-color: red }
-
-
-#orgainizerContainer {
-    
-    #navView {
-        background-color: $primaryColor;
-        min-width: $minWidth;
-    }
-    
-    #newBtn {
-        background-color: $accentColor1;
-    }
-    
-    #contentViewContainer.tableView,
-    #contentViewContainer.listView,
-    #contentViewContainer.thumbnailView {
-        margin-top: 145px;
-    }
-    
-}
-
-#navView {
-    
-    #itemTable {
-        background-color: white;
-        border-radius: 4px;
-    }
-    
-    label {
-        color: white;
-    }
-    
-}
-
-
-
-#contentViewContainer {
-    
-    #selectedItem {
-        margin-top: 135px;
-    }
-    
-    #docView {
-        margin-top: 125px;
-    }
-    
-}
-
-#itemTable {
-    th, td {
-        vertical-align: top;
-        cursor: pointer;
-    }
-    
-    th:last-child {
-        min-width: 139px;
-    }
-}
-
-button {
-    
-    img {
-        width: 18px;
-    }
-    
-}
-
-
 
 
 

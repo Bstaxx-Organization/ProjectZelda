@@ -2,7 +2,7 @@
 
 (function () {
     'use strict';
-    angular.module('categorizer', ['ngCookies', 'angularLocalStorage']);
+    angular.module('organizer', ['ngCookies', 'angularLocalStorage']);
+    
     
 }());
-
