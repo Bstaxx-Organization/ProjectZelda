@@ -20,6 +20,7 @@
     "bootstrap": "^3.3.7",
     "angularLocalStorage": "^0.3.2",
     "angular-route": "^1.6.5",
-    "angular-cookies": "^1.6.5"
+    "angular-cookies": "^1.6.5",
+    "cryptico": "*"
   }
 }
