@@ -1,5 +1,5 @@
 <div class="media col-xs-12"
-     ng-repeat="item in items | filter: itemSettings.filter | limitTo : itemSettings.rowLimit" 
+     ng-repeat="item in items | filter : itemSettings.filter | orderBy : itemSettings.orderBy : itemSettins.reverseSort | limitTo : itemSettings.rowLimit track by $index" 
      ng-init="item.index = $index">
     <div class="media-left">
         <a href="#">
@@ -34,7 +34,7 @@
             <button 
                     type="button" 
                     class="btn btn-default" 
-                    ng-click="deleteItem( item )">
+                    ng-click="delete( item )">
                 <img src="img/delete.png" alt="" style="width:18px;" >
             </button>
         </div>

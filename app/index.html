@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="categorizer">
+<html ng-app="organizer">
 
 <head>
     <meta charset="utf-8">
@@ -22,6 +22,8 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/jQuery.dotdotdot/src/jquery.dotdotdot.js"></script>
+    
     <!-- Include all compiled plugins (below), or include individual files as needed -->
 
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -31,8 +33,13 @@
     
     <script src="js/itemModel.js"></script>
     
+    
+    
     <script src="js/organizerApp.js"></script>
-    <script src="js/navController.js"></script>
+    <script src="js/organizerFactories.js"></script>
+    <script src="js/organizerFilters.js"></script>
+    <script src="js/organizerController.js"></script>
+    
 
     <!--script src="js/items.js"></script-->
 
@@ -40,7 +47,7 @@
 
 <body>
 
-    <div id="orgainizerContainer" class="container-fluid" ng-controller="navController">
+    <div id="orgainizerContainer" class="container-fluid" ng-controller="organizerController">
 
         <!--navbar-fixed-top-->
         <nav id="navView" class="navbar navbar-default navbar-fixed-top" aria-label="Page navigation" ng-include="navView">

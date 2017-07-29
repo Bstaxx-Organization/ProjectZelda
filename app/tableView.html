@@ -12,11 +12,7 @@
     </thead>
 
     <tbody ng-show="contentView == tableView">
-        <tr ng-init="item.index = $index"
-            ng-repeat="item in items | 
-            filter : itemSettings.filter | 
-            limitTo : itemSettings.rowLimit | 
-            orderBy : itemSettings.orderBy : itemSettings.reverseSort">
+        <tr ng-repeat="item in items | filter : itemSettings.filter | orderBy : itemSettings.orderBy : itemSettins.reverseSort | limitTo : itemSettings.rowLimit track by $index">
 
             <td>{{ item.title | uppercase }}</td>
             <td>{{ item.description }}</td>
@@ -32,7 +28,7 @@
                         <img src="img/insert.png" alt="insert" >
                     </button>
 
-                    <button type="button" class="btn btn-default" ng-click="item.delete()">
+                    <button type="button" class="btn btn-default" ng-click="data.delete(item)">
                         <img src="img/delete.png" alt="delete">
                     </button>
 

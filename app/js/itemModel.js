@@ -2,10 +2,11 @@ var Item = {};
 
 Item.prototype = {
     
-    delete: function () {
+    delete: function ( item ) {
+        console.log('delete');
         if( confirm("Are you sure you want to delete this item?") ) {
-            this.active = false;
-            console.log(this);
+            item.active = false;
+            console.log(item);
             return this;
         }
         
@@ -53,12 +54,13 @@ Item.prototype = {
         }
     },
     
-    addProperty: function () {
-        var selectedProperty = this.selectedProperty;
+    addProperty: function ( item ) {
+        var selectedProperty = item.selectedProperty;
+        console.log(item);
         switch( selectedProperty.dataModel ) {
             case 'item':
-                this.properties.push({ 
-                    id: this.properties.length,
+                item.properties.push({ 
+                    id: item.properties.length,
                     model: selectedProperty.dataModel, 
                     itemId: selectedProperty.itemModel, 
                     active: true 
@@ -66,8 +68,8 @@ Item.prototype = {
                 console.log(selectedProperty);
                 break;
             case 'text':
-                this.properties.push({ 
-                    id: this.properties.length,
+                item.properties.push({ 
+                    id: item.properties.length,
                     model: selectedProperty.dataModel, 
                     propertyName: selectedProperty.propertyName, 
                     data: selectedProperty.textData,
