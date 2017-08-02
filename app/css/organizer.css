@@ -1,20 +1,26 @@
 /*==================================================
 =            Bootstrap 3 Media Queries             =
 ==================================================*/
-html, body {
-  height: 100%;
-  background-color: #eee; }
+html {
+  height: 100%; }
+  html .footer {
+    width: 100%;
+    height: 60px;
+    line-height: 60px; }
 
-#orgainizerContainer #navView {
+#navView {
   background-color: #8862A9;
   min-width: 320px; }
-  #orgainizerContainer #navView #itemTable {
+  #navView #itemTable {
     background-color: white;
     border-radius: 4px; }
-  #orgainizerContainer #navView label {
+  #navView label {
     color: white; }
-  #orgainizerContainer #navView #newBtn {
+  #navView #newBtn {
     background-color: #F18E3C; }
+
+#orgainizerContainer #contentViewContainer {
+  /**/ }
 
 #orgainizerContainer .tableView,
 #orgainizerContainer .listView,

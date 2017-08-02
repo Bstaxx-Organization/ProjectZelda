@@ -2,6 +2,7 @@ $primaryColor: #8862A9;
 $secondaryColor: #eee;
 $accentColor1: #F18E3C;
 $accentColor2: #00CAF9;
+$accentColor3: #ccc;
 
 $minWidth: 320px;
 
@@ -9,19 +10,18 @@ $minWidth: 320px;
 =            Bootstrap 3 Media Queries             =
 ==================================================*/
 
-
-
-
-
-
-html, body {
+html {
     height: 100%;
-    background-color: $secondaryColor;
-}
-
-#orgainizerContainer {
     
-    #navView {
+
+    
+    .footer {
+        width: 100%;
+        height: 60px;
+        line-height: 60px;
+    }
+}
+#navView {
         background-color: $primaryColor;
         min-width: $minWidth;
         #itemTable {
@@ -32,13 +32,21 @@ html, body {
         label {
             color: white;
         }
-        
+
         #newBtn {
             background-color: $accentColor1;
         }
     }
+
+#orgainizerContainer {
     
     
+    
+    #contentViewContainer {
+        /**/
+    }
+
+
 
     .tableView, 
     .listView,
@@ -47,9 +55,9 @@ html, body {
     .docView
     {
         margin-top: 145px;
-        
+
     }
-    
+
     .tableView {
         #itemTable {
             th, td {
@@ -62,7 +70,7 @@ html, body {
             }
         }
     }
-    
+
     .thumbnailView {
         .thumbnail {
             position:relative;
@@ -78,7 +86,7 @@ html, body {
             }
         }
     }
-    
+
     .editView {
         .thumbnail {
             canvas { width: 100%; }
@@ -88,21 +96,25 @@ html, body {
         }
     }
 
-    
-    
+
+
 }
 
 
 
 
 
-button {
-    
-    img {
-        width: 18px;
+    button {
+
+        img {
+            width: 18px;
+        }
+
     }
     
-}
+
+
+
 
 
     /*==========  Mobile First Method  ==========*/

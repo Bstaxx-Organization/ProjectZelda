@@ -23,47 +23,55 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/jQuery.dotdotdot/src/jquery.dotdotdot.js"></script>
-    
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
 
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angularLocalStorage/dist/angularLocalStorage.min.js"></script>
-    
-    <script src="js/itemModel.js"></script>
-    
-    
-    
+
+    <!-- Include app files (below) -->
     <script src="js/organizerApp.js"></script>
+    <script src="js/organizerDirectives.js"></script>
     <script src="js/organizerFactories.js"></script>
+    <script src="js/organizerServices.js"></script>
     <script src="js/organizerFilters.js"></script>
     <script src="js/organizerController.js"></script>
-    
-
-    <!--script src="js/items.js"></script-->
 
 </head>
 
-<body>
+<!--orgainizerController | app controller -->
+<body ng-controller="organizerController">
 
-    <div id="orgainizerContainer" class="container-fluid" ng-controller="organizerController">
+    <!--#orgainizerContainer | app container-->
+    <div id="orgainizerContainer" class="container-fluid">
 
-        <!--navbar-fixed-top-->
-        <nav id="navView" class="navbar navbar-default navbar-fixed-top" aria-label="Page navigation" ng-include="navView">
-        </nav>
+        <!--#navView | navbar-fixed-top-->
+        <nav id="navView" class="navbar navbar-default navbar-fixed-top" aria-label="Page navigation" ng-include="navView"></nav>
 
+        <!--#contentViewContainer | contentViewContainerClass = current view -->
         <div id="contentViewContainer" class="container" ng-class="contentViewContainerClass">
 
-            <div id="contentView" class="row" ng-include="contentView">
-            </div>
+            <!--#contentView | injects the current view -->
+            <div id="contentView" class="row" ng-include="contentView"></div>
 
         </div>
 
+        <!--.footer | only shown on editView-->
+        <footer class="footer container" ng-show="contentView == editView">
+            
+            <!--database buttons | saves data -->
+            <div class="form-group">
+                <button type="button" class="btn btn-primary" ng-click="data.saveAndNew(this)">Save and new</button>
+                <button type="submit" class="btn btn-default" ng-click="data.saveAndClose(this)">Save and close</button>
+            </div>
+            
+        </footer>
+
     </div>
 
-    <div id="modalContainer" ng-include="modal.html">
-    </div>
+    <!--#modalContainer | modal-->
+    <div id="modalContainer" ng-include="modal.html"></div>
 
 </body>
 

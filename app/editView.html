@@ -15,15 +15,14 @@
     <div class="form-group">
         <label for="icon">Upload Icon</label>
         <input type="file" class="form-control" id="icon" accept="image/*" capture="camera"
-            fileread="data.selectedItem.iconFile"
-            data.selectedItem="data.selectedItem">
+            fileread="data.selectedItem.iconFile">
     </div>
     
-    <div class="row">
+    <div class="row" ng-init="data.renderIcons()">
         <div class="col-xs-4 col-sm-2">
            <a href="#" class="thumbnail" 
               ng-click="data.selectedItem.iconCanvas = '#iconCanvas1'"
-              ng-class="canvasClass('#iconCanvas1')">
+              ng-class="canvasClass(this)">
                <canvas id="iconCanvas1" class="" width="120" height="120" ></canvas>
            </a>
         </div>
@@ -31,7 +30,7 @@
         <div class="col-xs-4 col-sm-2">
            <a href="#" class="thumbnail" 
               ng-click="data.selectedItem.iconCanvas = '#iconCanvas2'"
-              ng-class="canvasClass('#iconCanvas2')">
+              ng-class="canvasClass(this)">
                <canvas id="iconCanvas2" class="" width="120" height="120" ></canvas>
            </a>
         </div>
@@ -39,13 +38,15 @@
         <div class="col-xs-4 col-sm-2">
            <a href="#" class="thumbnail" 
               ng-click="data.selectedItem.iconCanvas = '#iconCanvas3'"
-              ng-class="canvasClass('#iconCanvas3')">
+              ng-class="canvasClass(this)">
                <canvas id="iconCanvas3" class="" width="120" height="120" ></canvas>
            </a>
         </div>   
     </div>
 
-    <img id="iconImage" class="col-xs-12 col-sm-6" alt="{{ data.selectedItem.title }}" ng-src="{{ data.selectedItem.iconFile }}" style="display:none;" />
+    <img id="iconImage" class="col-xs-12 col-sm-6" alt="{{ data.selectedItem.title }}" 
+        ng-src="{{ data.selectedItem.iconFile }}" 
+        style="display:block;" />
     
     <div style="clear:both"></div>
     
@@ -53,39 +54,38 @@
 
     <div class="form-group">
         <label for="propertyAction">Add Property</label>
-        <select id="dataModel" class="form-control" ng-model="data.selectedItem.selectedProperty.dataModel">
-            <option value=""></option>
+        <select id="dataModel" class="form-control" ng-model="data.selectedProperty.dataModel">
             <option value="item">Item Model</option>
             <option value="text">Text Model</option>
         </select>
     </div>
     
-    <div class="form-group" ng-show="data.selectedItem.selectedProperty.dataModel == 'item'">
+    <div class="form-group" ng-show="data.selectedProperty.dataModel == 'item'">
         <select id="itemModel" class="form-control" 
-            ng-model="data.selectedItem.selectedProperty.itemModel" 
-            ng-options="item.id as item.title for item in items | freeProperties:this:data.data.selectedItem">
-            <option value="">**Select Item Model**</option>
+            ng-model="data.selectedProperty.itemModel" 
+            ng-options="item.id as item.title for item in items | freeProperties:this:data.selectedItem">
         </select>
     </div>
     
-    <div class="form-group" ng-show="data.selectedItem.selectedProperty.dataModel && data.selectedItem.selectedProperty.dataModel != 'item'">
+    <div class="form-group" ng-show="data.selectedProperty.dataModel && data.selectedProperty.dataModel  != 'item'">
         <input id="propertyName" class="form-control" type="text" placeholder="Enter Property Name" 
-            ng-model="data.selectedItem.selectedProperty.propertyName">
+            ng-model="data.selectedProperty.propertyName">
     </div>
     
-    <div class="form-group" ng-show="data.selectedItem.selectedProperty.dataModel && data.selectedItem.selectedProperty.dataModel != 'item'">
+    <div class="form-group" ng-show="data.selectedProperty.dataModel && data.selectedProperty.dataModel != 'item'">
         <textarea id="textData" class="form-control" rows="5" placeholder="Enter Text Data"
-            ng-model="data.selectedItem.selectedProperty.textData"
+            ng-model="data.selectedProperty.textData"
         ></textarea>
     </div>
     
-    <div class="form-group">
+    <div class="form-group" >
         <button type="button" class="btn btn-block" 
-            ng-click="addProperty( data.selectedItem )"
+            ng-click="data.addProperty( data.selectedItem )"
+            ng-disabled="service.propertyValidation(this, $scope)"
             >Add Property</button>
     </div>
     
-    <table class="table table-hover table-condensed">
+    <table class="table table-hover table-condensed" >
 
         <thead>
             <tr>
@@ -118,38 +118,5 @@
             <option value="selection">number</option>
         </select>
     </div>
-
-    <!--div class="form-group" ng-show="data.selectedItem.newPropertyType == 'text'">
-        <label for="newPropertyType" >Name</label>
-        <input type="text" class="form-control" id="newText" ng-model="data.selectedItem.selectedProperty.name" >
-    </div-->
-
-    <!--div class="form-group" ng-show="data.selectedItem.propertyAction == 'copy'">
-        <label for="copyFrom" >Copy From</label>
-        <select id="copyFrom" class="form-control"
-                ng-model="data.selectedItem.copyFrom">
-            <option value=""></option>
-            <option value="item">Copy Item</option>
-            <option value="itemProperty">Copy Item Property</option>
-        </select>
-    </div-->
-
-    <div class="form-group">
-        <button type="button" class="btn btn-primary" ng-click="data.saveAndNew(this)">Save and new</button>
-        <button type="submit" class="btn btn-default" ng-click="data.saveAndClose(this)">Save and close</button>
-    </div>
   
-
-    <!--button type="submit" class="btn btn-default" 
-            ng-show="showUpdateBtn"
-            ng-click="updateItem()" >Update Item</button-->
 </form>
-
-<script type="text/javascript">
-   /* $('document').ready( function () {
-        var canvas = document.querySelector('#myCanvas'),
-            image = document.querySelector('#iconImage'),
-            ctx = canvas.getContext("2d");
-        ctx.drawImage(image, 0, 0, 120, 120);
-    });*/
-</script>

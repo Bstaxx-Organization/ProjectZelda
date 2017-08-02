@@ -37,21 +37,31 @@
     });
     
     // filters items array for items that are not already in selectedItem properties 
-    organizer.filter('freeProperties', ['data', function (data) {
+    organizer.filter('freeProperties', ['data', function ( data ) {
         return function (items, scope) {
             var output = [],
-                properties = data.selectedItem.properties;
-            for ( var i= 0; i < items.length; i++ ) {
-                var isProperty = false;
-                if ( properties ) {
+                selectedItem = data.selectedItem;
+            
+            if ( true ) {
+                
+                var properties = selectedItem && selectedItem.properties ? selectedItem.properties : [];
+                
+                for ( var i= 0; i < items.length; i++ ) {
+                    
+                    var isProperty = false;
+                    
                     for ( var j = 0; j < properties.length; j++ ) {        
+                        
+                        //console.log( items[i].id + " == " + properties[j].itemId );
+                        
                         if ( properties[j].itemId && items[i].id == properties[j].itemId ) { 
                             isProperty = true; 
                         } 
                     }
+                    //console.log( selectedItem );
+                    //if ( selectedItem && items[i].id == selectedItem.id ) { isProperty = false; }
+                    if ( !isProperty ) { output.push( items[i] ); } 
                 }
-                if ( items[i].id == data.selectedItem.id ) { isProperty = true; }
-                if ( !isProperty ) { output.push( items[i] ); } 
             }
             return output;
         }
